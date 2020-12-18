@@ -4,6 +4,18 @@ use std::ops;
 pub struct Vec3(f64, f64, f64);
 
 impl Vec3 {
+  pub fn new(x: f64, y: f64, z: f64) -> Vec3 {
+    Vec3(x, y, z)
+  }
+
+  pub fn destruct(self) -> (f64, f64, f64) {
+    (self.0, self.1, self.2)
+  }
+
+  pub fn map_to<T>(self, f: &dyn Fn(f64) -> T) -> (T, T, T) {
+    (f(self.0), f(self.1), f(self.2))
+  }
+
   // for coordinate
   pub fn x(self) -> f64 {
     self.0
