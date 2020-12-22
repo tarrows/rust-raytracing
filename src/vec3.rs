@@ -1,5 +1,6 @@
 use std::ops;
 
+// TODO?: consider about borrowing
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Vec3(f64, f64, f64);
 
@@ -66,6 +67,10 @@ impl Vec3 {
     let z = self.0 * v.1 - self.1 * v.0;
     Vec3(x, y, z)
   }
+}
+
+pub fn dot(v: Vec3, w: Vec3) -> f64 {
+  v.0 * w.0 + v.1 * w.1 + v.2 * w.2
 }
 
 impl ops::Add for Vec3 {
